@@ -4,11 +4,10 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { CharactersService } from './core/services/characters.service';
+import { ViewStateService } from './core/services/view-state.service';
 import { CharactersListComponent } from './core/components/characters-list/characters-list.component';
 import { CharactersCardComponent } from './core/components/characters-card/characters-card.component';
 import { SearchComponent } from './core/components/search/search.component';
-import { SearchService } from './core/services/search.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import { SearchService } from './core/services/search.service';
     BrowserModule,
     HttpModule
   ],
-  providers: [CharactersService, SearchService],
+  providers: [ViewStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

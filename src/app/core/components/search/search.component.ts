@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
-import { SearchService } from '../../services/search.service';
+import { ViewStateService } from '../../services/view-state.service';
 
 @Component({
   selector: 'app-search',
@@ -9,18 +9,18 @@ import { SearchService } from '../../services/search.service';
 })
 export class SearchComponent implements OnInit {
 
-  type: string = 'name';
+  type: string = 'people';
 
   private searchTerms = new Subject<string>();
 
-  constructor(private searchService: SearchService) { }
+  constructor(private viewStateService: ViewStateService) { }
 
   ngOnInit(): void {
 
   }
 
   search(term: string, type: string): void {
-    this.searchTerms.next(term);
+    this.viewStateService.search(term, type);
   }
 
 }

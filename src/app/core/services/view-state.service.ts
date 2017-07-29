@@ -5,9 +5,9 @@ import { Observable, Subject } from 'rxjs';
 import { Character } from '../models/character';
 
 @Injectable()
-export class CharactersService {
+export class ViewStateService {
 
-  private baseUrl: string = 'http://swapi.co/api/people'
+  private baseUrl: string = 'http://swapi.co/api'
 
     characterSubject: Subject<Character> = new Subject<Character>();
 
@@ -16,13 +16,23 @@ export class CharactersService {
   constructor(private http: Http) { }
 
   getAllCharacters(): Promise<Character[]> {
-    return this.http.get(this.baseUrl)
+    return this.http.get(`${this.baseUrl}/people`) 
       .toPromise()
       .then(response => {
         let characters = this.mapCharacters(response);
         this.characterSubject.next(characters);
       })
       .catch(this.handleError);
+  }
+
+  search(term: string, type: string): Promise<void> {
+    return this.http.get(`${this.baseUrl}/${type}/?search=${term}`)
+        .toPromise()
+        .then(response => {
+          let characters = this.mapCharacters(response);
+          this.characterSubject.next(characters);
+        })
+        .catch();
   }
 
   mapCharacters (response: Response) {
