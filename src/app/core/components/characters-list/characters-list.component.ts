@@ -9,7 +9,7 @@ import { Character } from '../../models/character';
 @Component({
   selector: 'app-characters-list',
   templateUrl: './characters-list.component.html',
-  styleUrls: ['./characters-list.component.css']
+  styleUrls: ['./characters-list.component.scss']
 })
 export class CharactersListComponent implements OnInit {
 
@@ -23,7 +23,6 @@ export class CharactersListComponent implements OnInit {
     this.charactersService.getAllCharacters();
     this.characterChangedSubscription = this.charactersService.characterChanged.subscribe((characters) => {
       this.all = characters;
-      console.log(this.all)
     });
   }
 }

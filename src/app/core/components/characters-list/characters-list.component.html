@@ -1,9 +1,7 @@
-<p>
-  characters-list works!
-</p>
-<p *ngFor="let caracter of all">
-  {{ caracter.name }}
-</p>
-
-<app-character-card></app-character-card>
-
+<main>
+  <app-search></app-search>
+  <div class="characters-list">
+    <app-characters-card *ngFor="let caracter of all" [content]="caracter" class="characters-list_card">
+    </app-characters-card>
+  </div>
+</main>

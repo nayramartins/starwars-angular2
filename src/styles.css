@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'Slabo';
+    src: url('/assets/font/slabo27px-regular-webfont.eot'),
+        url('/assets/font/slabo27px-regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('/assets/font/slabo27px-regular-webfont.woff2') format('woff2'),
+        url('/assets/font/slabo27px-regular-webfont.woff') format('woff'),
+        url('/assets/font/slabo27px-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Slabo';
+    font-size: 1.2rem;
+}
