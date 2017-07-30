@@ -3,4 +3,6 @@ export interface Character {
   gender: string;
   homeworld: string;
   birth_year: string;
+  type: string;
+  id: string;
 }

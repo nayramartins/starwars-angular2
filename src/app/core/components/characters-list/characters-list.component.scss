@@ -23,6 +23,7 @@ main {
     &_card {
         flex-grow: 1;
         min-width: 25rem;
+        max-width: 30rem;
         margin: 1rem;
     }
 }

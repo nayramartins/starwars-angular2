@@ -16,8 +16,10 @@ const categories = [
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-
-  categories: any[];
+  /**
+    * All the categories returned by SWAPI.
+   */
+  categories: any;
 
   currentCategory: string = 'people';
 
