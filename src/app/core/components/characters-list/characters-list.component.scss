@@ -6,18 +6,15 @@ main {
     justify-content: center;
     min-height: 100vh;
     padding: 2rem;
-    background-image: url('../../../../assets/images/background-full.jpg');
-    background-color: $sw-pink-light;
+    background-color: $sw-grey;
     background-position: center center;
     background-size: cover;
-    background-blend-mode: multiply;
     box-sizing: border-box;
 }
 
 .characters-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     margin-top: 1.5rem;
 
     &_card {
@@ -25,5 +22,24 @@ main {
         min-width: 25rem;
         max-width: 30rem;
         margin: 1rem;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 5rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin: 0 2rem;
+        color: $sw-blue-light-dark;
+        cursor: pointer;
+    }
+
+    .selected {
+        font-weight: bold;
+        text-decoration: underline;
     }
 }

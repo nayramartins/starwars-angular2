@@ -1,0 +1,59 @@
+@import '../../styles/_color-variables';
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 5rem;
+    background-image: url('../../../../assets/images/background-planets.jpg');
+    background-color: $sw-brown;
+    background-position: center center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    box-sizing: border-box;
+
+    &-content {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 3.2rem;
+        line-height: 1.5;
+
+        &_name {
+            font-size: 4rem;
+        }
+
+        li {
+            position: relative;
+            color: $sw-white;
+            word-break: break-all;
+
+            strong {
+                margin-right: 1rem;
+                font-size: 1.8rem;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .back-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20rem;
+        height: 5rem;
+        margin-top: 3rem;
+        border: 0.1rem solid $sw-white;
+        border-radius: 0.2rem;
+        color: $sw-white;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+}

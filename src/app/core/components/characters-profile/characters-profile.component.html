@@ -1,8 +1,9 @@
 <div class="profile">
-  <ul>
-    <li>{{ characterInfo.name }}</li>
-    <li>{{ characterInfo.homeworld }}</li>
-    <li>{{ characterInfo.birth_year }}</li>
-    <li>{{ characterInfo.gender }}</li>
+  <ul class="profile-content">
+    <li class="profile-content_name">{{ profileInfo.name }}</li>
+    <li><strong>Homeworld: </strong> {{ profileInfo.homeworld }}</li>
+    <li><strong>Birth Year: </strong>{{ profileInfo.birth_year }}</li>
+    <li><strong>Gender: </strong>{{ profileInfo.gender }}</li>
   </ul>
+  <div class="back-button" (click)="goBack()">Back</div>
 </div>

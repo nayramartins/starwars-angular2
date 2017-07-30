@@ -1,12 +1,14 @@
+<app-logo></app-logo>
 <main>
   <app-search></app-search>
   <app-category></app-category>
   <div class="characters-list">
     <app-characters-card *ngFor="let character of all" [content]="character"
-      (click)="getSelectedCharacter(character)" class="characters-list_card" [routerLink]="['/', character.type, character.id]">
+      [class]="character.type + ' characters-list_card'" [routerLink]="['/', character.type, character.id]">
     </app-characters-card>
   </div>
-  <ul>
-    <li *ngFor="let pageItem of pageItems" (click)="setCurrentPage(pageItem)">{{ pageItem }}</li>
+  <ul class="pagination">
+    <li *ngFor="let pageItem of pageItems" (click)="setCurrentPage(pageItem)"
+      [class.selected]="pageItem === currentPage">{{ pageItem }}</li>
   </ul>
 </main>

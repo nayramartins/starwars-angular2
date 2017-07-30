@@ -11,6 +11,10 @@ import { CharactersCardComponent } from './core/components/characters-card/chara
 import { SearchComponent } from './core/components/search/search.component';
 import { CategoryComponent } from './core/components/category/category.component';
 import { CharactersProfileComponent } from './core/components/characters-profile/characters-profile.component';
+import { StarshipsProfileComponent } from './core/components/starships-profile/starships-profile.component';
+import { PlanetsProfileComponent } from './core/components/planets-profile/planets-profile.component';
+import { SpeciesProfileComponent } from './core/components/species-profile/species-profile.component';
+import { LogoComponent } from './core/components/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { CharactersProfileComponent } from './core/components/characters-profile
     CharactersCardComponent,
     SearchComponent,
     CategoryComponent,
-    CharactersProfileComponent
+    CharactersProfileComponent,
+    StarshipsProfileComponent,
+    PlanetsProfileComponent,
+    SpeciesProfileComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,

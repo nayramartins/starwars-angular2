@@ -5,15 +5,14 @@ import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Rx';
 
 import { ViewStateService } from '../../services/view-state.service';
-import { Character } from '../../models/character';
-
+import { Specie } from '../../models/specie';
 
 @Component({
-  selector: 'app-characters-profile',
-  templateUrl: './characters-profile.component.html',
-  styleUrls: ['./characters-profile.component.scss']
+  selector: 'app-species-profile',
+  templateUrl: './species-profile.component.html',
+  styleUrls: ['./species-profile.component.scss']
 })
-export class CharactersProfileComponent implements OnInit {
+export class SpeciesProfileComponent implements OnInit {
 
   info: any;
 
@@ -30,11 +29,12 @@ export class CharactersProfileComponent implements OnInit {
       this.profileInfo = info;
     });
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.viewStateService.getInfo('people', params.get('id')))
+      .switchMap((params: ParamMap) => this.viewStateService.getInfo('species', params.get('id')))
       .subscribe(info => this.info = info);
   }
 
   goBack(): void {
     this.location.back();
   }
+
 }

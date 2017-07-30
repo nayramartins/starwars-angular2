@@ -116,16 +116,21 @@ export class ViewStateService {
     return this.categorySubject.next(category);
   }
 
-  setSelectedCharacter(character: any): void {
-    return this.selectionSubject.next(character);
+  setSelectedCharacter(info: any): void {
+    return this.selectionSubject.next(info);
   }
 
-  getCharacter(type: string, id: string) {
+  getInfo(type: string, id: string) {
     return this.http.get(`${this.baseUrl}/${type}/${id}`)
       .toPromise()
       .then(response => {
-        let character = this.toCharacter(response.json());
-        this.selectionSubject.next(character);
+        let typeOfRequest;
+        if (type === 'people') typeOfRequest = this.toCharacter;
+        if (type === 'species') typeOfRequest = this.toSpecie;
+        if (type === 'planets') typeOfRequest = this.toPlanet;
+        if (type === 'starships') typeOfRequest = this.toStarship;
+        let info = typeOfRequest(response.json());
+        this.selectionSubject.next(info);
       })
       .catch((err) => console.log(err));
   }

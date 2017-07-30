@@ -56,8 +56,4 @@ export class CharactersListComponent implements OnInit {
     this.currentPage = pageItem;
     this.getCharactersType();
   }
-
-  getSelectedCharacter(character: any): void {
-    this.viewStateService.setSelectedCharacter(character);
-  }
 }

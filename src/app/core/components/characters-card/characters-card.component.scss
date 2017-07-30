@@ -14,10 +14,9 @@
 
     &-top {
         flex-grow: 1;
-        background-color: $sw-red;
-        background-image: url('../../../../assets/images/star-wars-icons-1024x836.png');
+        background-color: $sw-yellow;
         background-blend-mode: multiply;
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
     }
@@ -25,7 +24,7 @@
     &-bottom {
         display: flex;
         align-items: center;
-        min-height: 4rem;
+        min-height: 6rem;
         padding: 0 1rem;
         background: $sw-white;
         box-sizing: border-box;
@@ -40,4 +39,20 @@
         opacity: 0.8;
         box-shadow: none;
     }
+}
+
+.people {
+    background-image: url('../../../../assets/images/background-characters.jpg');
+}
+
+.starships {
+    background-image: url('../../../../assets/images/background-spaceship.jpg');
+}
+
+.planets {
+    background-image: url('../../../../assets/images/background-planets.jpg');
+}
+
+.species {
+    background-image: url('../../../../assets/images/background-species.jpg');
 }

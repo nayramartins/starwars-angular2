@@ -5,15 +5,15 @@ import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Rx';
 
 import { ViewStateService } from '../../services/view-state.service';
-import { Character } from '../../models/character';
+import { Planet } from '../../models/planet';
 
 
 @Component({
-  selector: 'app-characters-profile',
-  templateUrl: './characters-profile.component.html',
-  styleUrls: ['./characters-profile.component.scss']
+  selector: 'app-planets-profile',
+  templateUrl: './planets-profile.component.html',
+  styleUrls: ['./planets-profile.component.scss']
 })
-export class CharactersProfileComponent implements OnInit {
+export class PlanetsProfileComponent implements OnInit {
 
   info: any;
 
@@ -30,7 +30,7 @@ export class CharactersProfileComponent implements OnInit {
       this.profileInfo = info;
     });
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.viewStateService.getInfo('people', params.get('id')))
+      .switchMap((params: ParamMap) => this.viewStateService.getInfo('planets', params.get('id')))
       .subscribe(info => this.info = info);
   }
 
