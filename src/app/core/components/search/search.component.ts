@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs/Rx';
+import { Subject, Subscription } from 'rxjs/Rx';
 import { ViewStateService } from '../../services/view-state.service';
 
 @Component({
@@ -9,18 +9,26 @@ import { ViewStateService } from '../../services/view-state.service';
 })
 export class SearchComponent implements OnInit {
 
+  private categoryChangedSubscription: Subscription = new Subscription();
+
   type: string = 'people';
 
   private searchTerms = new Subject<string>();
 
   constructor(private viewStateService: ViewStateService) { }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
+    this.setCurrentType();
   }
 
   search(term: string, type: string): void {
     this.viewStateService.search(term, type);
+  }
+
+  setCurrentType() {
+    this.categoryChangedSubscription = this.viewStateService.categoryChanged.subscribe((category) => {
+      this.type = category;
+    });
   }
 
 }

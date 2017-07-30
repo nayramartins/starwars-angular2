@@ -8,13 +8,15 @@ import { ViewStateService } from './core/services/view-state.service';
 import { CharactersListComponent } from './core/components/characters-list/characters-list.component';
 import { CharactersCardComponent } from './core/components/characters-card/characters-card.component';
 import { SearchComponent } from './core/components/search/search.component';
+import { CategoryComponent } from './core/components/category/category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharactersListComponent,
     CharactersCardComponent,
-    SearchComponent
+    SearchComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

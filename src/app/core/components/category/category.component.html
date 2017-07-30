@@ -1,0 +1,6 @@
+<ul class="categories">
+  <li *ngFor="let category of categories" class="categories-item">
+    <span (click)="setCurrentCategory(category)"
+      [class.selected]="currentCategory === category.type">{{ category.name }}</span>
+  </li>
+</ul>

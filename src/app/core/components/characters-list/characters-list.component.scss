@@ -21,8 +21,8 @@ main {
     margin-top: 1.5rem;
 
     &_card {
-        width: calc((100% - 2rem * 5) / 5);
-        min-width: 20rem;
+        flex-grow: 1;
+        min-width: 25rem;
         margin: 1rem;
     }
 }
