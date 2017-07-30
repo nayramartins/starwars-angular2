@@ -13,6 +13,12 @@ export class CharactersListComponent implements OnInit {
 
   type: string = 'people';
 
+  pages: number;
+
+  pageItems: any[] = [];
+
+  currentPage: number = 1;
+
   private categoryChangedSubscription: Subscription = new Subscription();
 
   all: Character;
@@ -23,8 +29,10 @@ export class CharactersListComponent implements OnInit {
 
   ngOnInit() {
     this.getCharactersType();
-    this.characterChangedSubscription = this.viewStateService.characterChanged.subscribe((characters) => {
-      this.all = characters;
+    this.characterChangedSubscription = this.viewStateService.characterChanged.subscribe((viewContext) => {
+      this.all = viewContext[0];
+      this.pages = viewContext[1];
+      this.getPageNumber();
     });
     this.categoryChangedSubscription = this.viewStateService.categoryChanged.subscribe((category) => {
       this.type = category;
@@ -32,7 +40,21 @@ export class CharactersListComponent implements OnInit {
     });
   }
 
-  getCharactersType() {
-    this.viewStateService.getAllCharacters(this.type);
+  getCharactersType(): void {
+    this.viewStateService.getAllCharacters(this.type, this.currentPage);
+  }
+
+  getPageNumber(): any {
+    let i;
+    this.pageItems = []
+    for (i = 1; i <= this.pages; i++) {
+      this.pageItems.push(i);
+    };
+    console.log(this.pageItems);
+  }
+
+  setCurrentPage(pageItem: number): any {
+    this.currentPage = pageItem;
+    this.getCharactersType();
   }
 }

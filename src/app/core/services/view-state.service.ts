@@ -9,7 +9,7 @@ export class ViewStateService {
 
   private baseUrl: string = 'http://swapi.co/api'
 
-  characterSubject: Subject<Character> = new Subject<Character>();
+  characterSubject: Subject<any> = new Subject<any>();
 
   characterChanged: Observable<Character> = this.characterSubject.asObservable();
 
@@ -19,12 +19,14 @@ export class ViewStateService {
 
   constructor(private http: Http) { }
 
-  getAllCharacters(type: string): Promise<Character[]> {
-    return this.http.get(`${this.baseUrl}/${type}`)
+  getAllCharacters(type: string, page: number): Promise<Character[]> {
+    return this.http.get(`${this.baseUrl}/${type}/?page=${page}`)
       .toPromise()
       .then(response => {
         let characters = this.mapCharacters(response);
-        this.characterSubject.next(characters);
+        let pages = Math.ceil(response.json().count / 10);
+        let viewContext = [characters, pages];
+        this.characterSubject.next(viewContext);
       })
       .catch(this.handleError);
   }
@@ -34,7 +36,9 @@ export class ViewStateService {
       .toPromise()
       .then(response => {
         let characters = this.mapCharacters(response);
-        this.characterSubject.next(characters);
+        let pages = Math.ceil(response.json().count / 10);
+        let viewContext = [characters, pages];
+        this.characterSubject.next(viewContext);
       })
       .catch();
   }

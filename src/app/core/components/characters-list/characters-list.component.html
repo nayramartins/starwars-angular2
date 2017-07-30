@@ -5,4 +5,7 @@
     <app-characters-card *ngFor="let caracter of all" [content]="caracter" class="characters-list_card">
     </app-characters-card>
   </div>
+  <ul>
+    <li *ngFor="let pageItem of pageItems" (click)="setCurrentPage(pageItem)">{{ pageItem }}</li>
+  </ul>
 </main>
