@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpModule, Http } from '@angular/http';
 
+import { ViewStateService } from '../../services/view-state.service';
 import { CategoryComponent } from './category.component';
 
 describe('CategoryComponent', () => {
@@ -8,7 +10,9 @@ describe('CategoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CategoryComponent ]
+      declarations: [ CategoryComponent ],
+      providers: [ ViewStateService ],
+      imports: [ HttpModule ]
     })
     .compileComponents();
   }));
