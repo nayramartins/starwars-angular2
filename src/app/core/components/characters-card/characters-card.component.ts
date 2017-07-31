@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class CharactersCardComponent {
 
   @Input()
-  content: string;
+  content: any;
 
   constructor() { }
 }
