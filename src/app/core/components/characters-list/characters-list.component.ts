@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Character } from '../../models/character';
   templateUrl: './characters-list.component.html',
   styleUrls: ['./characters-list.component.scss']
 })
-export class CharactersListComponent implements OnInit {
+export class CharactersListComponent implements OnInit, OnDestroy {
 
   type: string = 'people';
 
@@ -55,5 +55,10 @@ export class CharactersListComponent implements OnInit {
   setCurrentPage(pageItem: number): any {
     this.currentPage = pageItem;
     this.getCharactersType();
+  }
+
+  ngOnDestroy() {
+    this.categoryChangedSubscription.unsubscribe();
+    this.infoChangedSubscription.unsubscribe();
   }
 }

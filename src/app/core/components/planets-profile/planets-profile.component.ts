@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -13,7 +13,7 @@ import { Planet } from '../../models/planet';
   templateUrl: './planets-profile.component.html',
   styleUrls: ['./planets-profile.component.scss']
 })
-export class PlanetsProfileComponent implements OnInit {
+export class PlanetsProfileComponent implements OnInit, OnDestroy {
 
   info: any;
 
@@ -36,5 +36,9 @@ export class PlanetsProfileComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  ngOnDestroy() {
+    this.selectionChangedSubscription.unsubscribe();
   }
 }
