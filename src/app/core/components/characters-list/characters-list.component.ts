@@ -46,7 +46,7 @@ export class CharactersListComponent implements OnInit {
 
   getPageNumber(): any {
     let i;
-    this.pageItems = []
+    this.pageItems = [];
     for (i = 1; i <= this.pages; i++) {
       this.pageItems.push(i);
     };

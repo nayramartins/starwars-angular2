@@ -24,6 +24,10 @@ export class ViewStateService {
 
   selectionChanged: Observable<any> = this.selectionSubject.asObservable();
 
+  relativeCharactersSubject: Subject<Character> = new Subject<Character>();
+
+  relativeCharacterChanged: Observable<Character> = this.relativeCharactersSubject.asObservable();
+
   constructor(private http: Http) { }
 
   getAllInfo(type: string, page: number): Promise<any> {
@@ -100,7 +104,7 @@ export class ViewStateService {
       name: data.name,
       rotation_period: data.rotation_period,
       population: data.population,
-      residents: data.residents,
+      surface_water: data.surface_water,
       type: data.url.split('/')[4],
       id: data.url.split('/')[5]
     });
@@ -130,7 +134,27 @@ export class ViewStateService {
         if (type === 'planets') typeOfRequest = this.toPlanet;
         if (type === 'starships') typeOfRequest = this.toStarship;
         let info = typeOfRequest(response.json());
-        this.selectionSubject.next(info);
+        if (type === 'people') {
+          this.http.get(`${info.homeworld}`)
+            .toPromise()
+            .then(response => {
+              info.homeworld = response.json().name;
+              info.residents = response.json().residents;
+              return this.selectionSubject.next(info);
+            })
+        } else {
+          this.selectionSubject.next(info);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  getRelatedCharacters(url) {
+    return this.http.get(url)
+      .toPromise()
+      .then(response => {
+        let relativeCharacter = this.toCharacter(response.json());
+        this.relativeCharactersSubject.next(relativeCharacter);
       })
       .catch((err) => console.log(err));
   }

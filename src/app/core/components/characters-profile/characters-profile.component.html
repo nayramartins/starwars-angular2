@@ -6,4 +6,14 @@
     <li><strong>Gender: </strong>{{ profileInfo.gender }}</li>
   </ul>
   <div class="back-button" (click)="goBack()">Back</div>
+  <p class="related-title">Other people from {{ profileInfo.homeworld }}</p>
+  <div class="related-container">
+    <div *ngFor="let resident of residents" [routerLink]="['/', resident.type, resident.id]"
+      class="residents card">
+      <div class="card-top"></div>
+      <div class="card-bottom">
+        <p class="card-bottom_title">{{ resident.name }}</p>
+      </div>
+    </div>
+  </div>
 </div>

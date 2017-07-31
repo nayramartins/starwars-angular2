@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-    padding: 0 5rem;
+    padding: 5rem;
     background-image: url('../../../../assets/images/background-characters.jpg');
     background-color: $sw-brown;
     background-position: center center;
@@ -54,5 +54,55 @@
         &:hover {
             background: rgba(255, 255, 255, 0.2);
         }
+    }
+}
+
+.related-title {
+    margin: 4rem 0 2rem;
+    font-size: 3.2rem;
+    color: $sw-white;
+}
+
+.related-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 25rem;
+    height: 20rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    box-sizing: border-box;
+    box-shadow: 0 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.35),
+    0 0.3vh 0.3vh 0 rgba(0, 0, 0, 0.17),
+    0 0.4vh 1.09375vh 0 rgba(0, 0, 0, 0.07);
+    cursor: pointer;
+
+    &-top {
+        flex-grow: 1;
+        background-color: $sw-pink;
+    }
+
+    &-bottom {
+        display: flex;
+        align-items: center;
+        min-height: 6rem;
+        padding: 0 1rem;
+        background: $sw-white;
+        box-sizing: border-box;
+
+        &_title {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+    }
+
+    &:active {
+        opacity: 0.8;
+        box-shadow: none;
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { Planet } from '../../models/planet';
   templateUrl: './starships-profile.component.html',
   styleUrls: ['./starships-profile.component.scss']
 })
-export class StarshipsProfileComponent implements OnInit {
+export class StarshipsProfileComponent implements OnInit, OnDestroy {
 
   info: any;
 
@@ -31,6 +31,10 @@ export class StarshipsProfileComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.viewStateService.getInfo('starships', params.get('id')))
       .subscribe(info => this.info = info);
+  }
+
+  ngOnDestroy() {
+    this.selectionChangedSubscription.unsubscribe();
   }
 
   goBack(): void {
